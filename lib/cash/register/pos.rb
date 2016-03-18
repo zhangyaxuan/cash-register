@@ -1,6 +1,12 @@
 class Pos
 
   def output(bill, goods_info)
-    "名称：apple，数量：1，单价：10，小计：10"
+    result = ""
+    for item in bill
+      goods = goods_info[item]
+      result += "名称：" + goods["name"]+"，数量：1，单价："+ goods["price"].to_s + "\n"
+    end
+
+    result
   end
 end

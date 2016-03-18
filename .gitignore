@@ -11,3 +11,6 @@
 .travis.yml
 CODE_OF_CONDUCT.md
 LICENSE.txt
+*.idea
+*.iml
+.idea/*.xml
