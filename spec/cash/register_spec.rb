@@ -1,6 +1,6 @@
 require 'spec_helper'
 require 'cash/register/pos'
-require 'cash/register/goods'
+require 'cash/register/models/goods'
 require 'pry'
 
 describe Cash::Register do
@@ -15,7 +15,7 @@ describe Cash::Register do
     let (:bill) { ["ITEM000001", "ITEM000002"] }
 
     it 'should return the receipt which contains name and price' do
-      receipt = pos.output(bill, goods_info)
+      receipt = pos.printReceipt(bill, goods_info)
       expect(receipt).to eql("名称：apple，数量：1，单价：10(元)，小计：10(元)"+ "\n" + "名称：banana，数量：1，单价：6(元)，小计：6(元)" + "\n")
     end
   end
@@ -24,7 +24,7 @@ describe Cash::Register do
     let (:bill) { ["ITEM000001-2", "ITEM000002"] }
 
     it 'should return the receipt which contains amount' do
-      receipt = pos.output(bill, goods_info)
+      receipt = pos.printReceipt(bill, goods_info)
 
       expect(receipt).to eql("名称：apple，数量：2，单价：10(元)，小计：20(元)"+ "\n" + "名称：banana，数量：1，单价：6(元)，小计：6(元)" + "\n")
     end
