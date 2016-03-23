@@ -11,9 +11,16 @@ class Pos
       end
 
       goods = goods_info[item_amount[0]]
-      result += "名称：" + goods["name"]+"，数量：#{item_amount[1]}，单价：#{goods["price"]}" + "\n"
+
+      cost = calculateMoney(goods["price"], item_amount[1])
+
+      result += "名称：#{goods["name"]}，数量：#{item_amount[1]}，单价：#{goods["price"]}(元)，小计：#{cost}(元)" + "\n"
     end
 
     result
+  end
+
+  def calculateMoney(price, amount)
+    price.to_i * amount.to_i
   end
 end
